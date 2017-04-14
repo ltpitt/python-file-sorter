@@ -14,7 +14,7 @@ def create_folders(path, folder_group_size):
     for folder_group in folder_groups:
         folder_name = folder_group[0].upper()
         if not os.path.exists(folder_name):
-            print 'Creating folder: ' + folder_name
+            click.echo('Creating folder: ' + folder_name)
             os.makedirs(folder_name)
     return folder_groups
 
@@ -45,17 +45,17 @@ def move_files_in_folders(path, source_files, destination_folders):
             if filename_first_character in folder:
                 destination_file_path = os.path.join(path + '/' + folder + '/' + file)
                 if not os.path.isfile(destination_file_path):
-                    print 'Moving: ' + source_file_path + ' to: ' + destination_file_path
+                    click.echo('Moving: ' + source_file_path + ' to: ' + destination_file_path)
                     os.rename(source_file_path, destination_file_path)
                     moved_files_counter += 1
                 else:
-                    print 'File: ' + source_file_path + ' already exists in: ' + destination_file_path
+                    click.echo('File: ' + source_file_path + ' already exists in: ' + destination_file_path)
                     skipped_files_counter += 1
-    print
-    print 'Process is complete.'
-    print
-    print 'Moved ' + str(moved_files_counter) + ' files'
-    print 'Skipped ' + str(skipped_files_counter) + ' files'
+    click.echo()
+    click.echo('Process is complete.')
+    click.echo()
+    click.echo('Moved ' + str(moved_files_counter) + ' files')
+    click.echo('Skipped ' + str(skipped_files_counter) + ' files')
 
 
 @click.command()
@@ -63,7 +63,17 @@ def move_files_in_folders(path, source_files, destination_folders):
 @click.option('--folder_group_size', default=1,
               help='Number of letters that will be grouped into a single folder e.g. 3 will create folders: 0 ABC DEF GHI ...')
 def main(path, folder_group_size):
-    created_folders = create_folders(path, folder_group_size)
-    files = get_files(path)
-    if len(files) > 0:
-        move_files_in_folders(path, files, created_folders)
+    click.echo('Ready to move files all files from: ' + str(path) +
+               ' to directories that will be created in the same path' )
+    if click.confirm('Do you want to continue?'):
+        click.echo('Rock\'n\'roll!')
+        created_folders = create_folders(path, folder_group_size)
+        files = get_files(path)
+        if len(files) > 0:
+            move_files_in_folders(path, files, created_folders)
+    else:
+        click.echo('Ok, bye!')
+
+# Uncomment those rows for manual testing
+#if __name__ == '__main__':
+#    main()
