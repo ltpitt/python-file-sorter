@@ -11,8 +11,13 @@ Here are [installation instructions](https://github.com/mitsuhiko/pipsi#readme).
 
 Simply run:
 
+    $ git clone https://github.com/ltpitt/python-file-sorter.git
+    $ cd python-file-sorter
     $ pipsi install .
 
+If you do not use pipsi then use pip:
+
+    $ pip install .
 
 # Usage
 
