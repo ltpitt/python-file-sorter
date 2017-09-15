@@ -32,7 +32,6 @@ Once pipsi is installed, from the script folder:
 To use it:
 
     $ file-sorter --help
-    
 ```
 Usage: file-sorter [OPTIONS]
 
