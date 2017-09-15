@@ -32,6 +32,17 @@ Once pipsi is installed, from the script folder:
 To use it:
 
     $ file-sorter --help
+    
+```
+Usage: file-sorter [OPTIONS]
+
+Options:
+  --path TEXT                  Path where the sorting will be applied
+  --folder_group_size INTEGER  Number of letters that will be grouped into a
+                               single folder e.g. 3 will create folders: 0 ABC
+                               DEF GHI ...
+  --help                       Show this message and exit.
+```
 
 ### Contribution guidelines ###
 
