@@ -59,7 +59,7 @@ def move_files_in_folders(path, source_files, destination_folders):
 
 
 @click.command()
-@click.option('--path', default='.', help='Path where the sorting will be applied')
+@click.option('--path', default='.', help='Path where the sorting will be applied', required=True)
 @click.option('--folder_group_size', default=1,
               help='Number of letters that will be grouped into a single folder e.g. 3 will create folders: 0 ABC DEF GHI ...')
 def main(path, folder_group_size):
